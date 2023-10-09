@@ -7,10 +7,14 @@
         },
         {
             "src": "public/**",
-            "use": "vercel-php@0.6.0"
+            "use": "@vercel/static"
         }
     ],
     "routes": [
+        {
+            "src": "^/public/(.*)",
+            "dest": "/public/$1"
+        },
         {
             "src": "/(.*)",
             "dest": "/api/index.php"
