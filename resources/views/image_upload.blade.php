@@ -10,7 +10,7 @@
     <div class="div-container">
         <form action="{{ route('image.save') }}" method="post" enctype="multipart/form-data">
             @csrf
-            <div class="image-preview" style="background-image: url('{{ asset('/images/rose.jpeg') }}')">
+            <div class="image-preview" style="background-image: url('public/images/rose.jpeg')">
                 <img id="image1">
                 <label for="imageInput1" class="file-label">１枚目</label>
                 <input type="file" id="imageInput1" name="image1" class="file-input">
