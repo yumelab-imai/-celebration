@@ -26,7 +26,24 @@
         </form>
     </div>
 
-    <script src="public/cropper.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script>
+        document.getElementById('editComplete').addEventListener('click', function(e){
+            e.preventDefault();
+            html2canvas(document.querySelector("form")).then(canvas => {
+                const dataURL = canvas.toDataURL('image/png');
+                const link = document.createElement('a');
+                link.href = dataURL;
+                link.download = 'screenshot.png';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            });
+        });
+    </script>
+
+
+    <script src="cropper.min.js"></script>
     <script>
         const image1 = document.getElementById('image1');
         const input1 = document.getElementById('imageInput1');
@@ -38,6 +55,7 @@
                 const reader = new FileReader();
 
                 reader.onload = function(e) {
+                    document.querySelector('.image-preview').style.backgroundImage = '';
                     image1.src = e.target.result;
                     if (cropper1) cropper1.destroy();
                     cropper1 = new Cropper(image1, {
@@ -65,10 +83,17 @@
                 const reader = new FileReader();
 
                 reader.onload = function(e) {
+                    document.querySelector('.image-preview2').style.backgroundImage = '';
                     image2.src = e.target.result;
                     if (cropper2) cropper2.destroy();
                     cropper2 = new Cropper(image2, {
-                        aspectRatio: 16 / 9
+                        aspectRatio: 16 / 9,
+                        cropBoxResizable: false,
+                        viewMode: 1,
+                        dragMode: 'move',
+                        guides: false,
+                        autoCrop: false,  // 追加: クロップボックスの自動表示をオフにする
+                        highlight: false
                     });
                 }
 
