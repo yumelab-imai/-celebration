@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Image Upload</title>
-    <link rel="stylesheet" href="{{ asset('css/image_upload.css') }}">
+    <link rel="stylesheet" href="public/css/image_upload.css">
     <link rel="stylesheet" href="{{ asset('cropper.min.css') }}">
 </head>
 <body>
