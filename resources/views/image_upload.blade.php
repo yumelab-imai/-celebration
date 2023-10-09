@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Image Upload</title>
     <link rel="stylesheet" href="public/css/image_upload.css">
-    <link rel="stylesheet" href="{{ asset('cropper.min.css') }}">
+    <link rel="stylesheet" href="public/cropper.min.css">
 </head>
 <body>
     <div class="div-container">
@@ -16,7 +16,7 @@
                 <input type="file" id="imageInput1" name="image1" class="file-input">
             </div>
 
-            <div class="image-preview2" style="background-image: url('{{ asset('/images/mountain.jpeg') }}')">
+            <div class="image-preview2" style="background-image: url('public/images/mountain.jpeg')">
                 <img id="image2">
                 <label for="imageInput2" class="file-label">2枚目</label>
                 <input type="file" id="imageInput2" name="image2" class="file-input">
@@ -26,7 +26,7 @@
         </form>
     </div>
 
-    <script src="{{ asset('cropper.min.js') }}"></script>
+    <script src="public/cropper.min.js"></script>
     <script>
         const image1 = document.getElementById('image1');
         const input1 = document.getElementById('imageInput1');
