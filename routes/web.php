@@ -21,4 +21,4 @@ Route::get('/', function () {
 
 
 Route::get('/image-upload', [ImageController::class, 'uploadForm']);
-Route::post('/image-upload', [ImageController::class, 'saveImage'])->name('image.save');;
+Route::post('/image-upload', [ImageController::class, 'saveImage'])->name('image.save');

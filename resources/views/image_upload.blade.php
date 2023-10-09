@@ -4,24 +4,27 @@
     <meta charset="UTF-8">
     <title>Image Upload</title>
     <link rel="stylesheet" href="{{ asset('css/image_upload.css') }}">
+    <link rel="stylesheet" href="{{ asset('cropper.min.css') }}">
 </head>
 <body>
-    <form action="{{ route('image.save') }}" method="post" enctype="multipart/form-data">
-        @csrf
-        <div class="image-preview" style="background-image: url('{{ asset('/images/rose.jpeg') }}')">
-            <img id="image1">
-            <label for="imageInput1" class="file-label">１枚目</label>
-            <input type="file" id="imageInput1" name="image1" class="file-input">
-        </div>
+    <div class="div-container">
+        <form action="{{ route('image.save') }}" method="post" enctype="multipart/form-data">
+            @csrf
+            <div class="image-preview" style="background-image: url('{{ asset('/images/rose.jpeg') }}')">
+                <img id="image1">
+                <label for="imageInput1" class="file-label">１枚目</label>
+                <input type="file" id="imageInput1" name="image1" class="file-input">
+            </div>
 
-        <div class="image-preview" style="background-image: url('{{ asset('/images/mountain.jpeg') }}')">
-            <img id="image2">
-            <label for="imageInput2" class="file-label">2枚目</label>
-            <input type="file" id="imageInput2" name="image2" class="file-input">
-        </div>
+            <div class="image-preview2" style="background-image: url('{{ asset('/images/mountain.jpeg') }}')">
+                <img id="image2">
+                <label for="imageInput2" class="file-label">2枚目</label>
+                <input type="file" id="imageInput2" name="image2" class="file-input">
+            </div>
 
-        <button id="editComplete" type="submit">編集完了</button>
-    </form>
+            <button id="editComplete" type="submit">編集完了</button>
+        </form>
+    </div>
 
     <script src="{{ asset('cropper.min.js') }}"></script>
     <script>
@@ -39,7 +42,12 @@
                     if (cropper1) cropper1.destroy();
                     cropper1 = new Cropper(image1, {
                         aspectRatio: 16 / 9,
-                        viewMode: 1
+                        cropBoxResizable: false,
+                        viewMode: 1,
+                        dragMode: 'move',
+                        guides: false,
+                        autoCrop: false,  // 追加: クロップボックスの自動表示をオフにする
+                        highlight: false
                     });
                 }
 
