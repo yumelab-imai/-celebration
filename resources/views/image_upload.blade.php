@@ -43,7 +43,7 @@
     </script>
 
 
-    <script src="cropper.min.js"></script>
+    <script src="public/cropper.min.js"></script>
     <script>
         const image1 = document.getElementById('image1');
         const input1 = document.getElementById('imageInput1');
